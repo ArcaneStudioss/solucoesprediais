@@ -98,21 +98,21 @@
     background: repeating-linear-gradient(135deg, var(--color-acc) 0 5px, #ee8a3e 5px 10px);
   }
 
-  /* CTA fixo no celular (item 9) */
+  /* Botão fixo do WhatsApp no canto (item 9): só o símbolo */
   .cta-fixo {
-    position: fixed; inset: auto 0 0 0; z-index: 40; display: grid; grid-template-columns: 1.4fr 1fr; gap: 8px;
-    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
-    background: rgb(228 227 223 / .94); border-top: 1px solid var(--color-junta);
-    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+    position: fixed; z-index: 40; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom));
+    display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%;
+    background: var(--color-acc); color: var(--color-tinta);
+    box-shadow: 0 10px 24px -10px rgb(23 24 26 / .45);
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), background-color .2s;
   }
-  .cta-fixo .btn { min-height: 48px; font-size: 15px; }
-  @media (min-width: 768px) { .cta-fixo { display: none; } }
-  body.tem-cta-fixo { padding-bottom: 76px; }
-  @media (min-width: 768px) { body.tem-cta-fixo { padding-bottom: 0; } }
+  .cta-fixo:hover { background: #ec8536; transform: translateY(-2px); }
+  .cta-fixo:active { transform: scale(.94); }
+  @media (min-width: 1024px) { .cta-fixo { right: 28px; bottom: 28px; } }
 
   /* aviso de cookies (arcane-analytics.js) */
   .aviso-cookies {
-    position: fixed; z-index: 60; left: 12px; right: 12px; bottom: 88px; padding: 16px;
+    position: fixed; z-index: 60; left: 12px; right: 12px; bottom: 90px; padding: 16px;
     background: var(--color-tinta); color: var(--color-placa); border-radius: var(--radius-ot); font-size: 14px; line-height: 1.5;
     box-shadow: 0 20px 40px -20px rgb(0 0 0 / .5);
   }

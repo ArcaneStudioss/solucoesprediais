@@ -66,7 +66,7 @@ function Cabecalho() {
           <a href="#processo" className="hover:text-acc-tinta">Como trabalhamos</a>
           <a href="#duvidas" className="hover:text-acc-tinta">Dúvidas</a>
         </nav>
-        <a href={whats()} className="btn btn-acc !min-h-11 !px-4 text-[15px]" target="_blank" rel="noopener">
+        <a href={whats()} className="btn btn-acc !min-h-11 !px-4 text-[15px] max-md:hidden" target="_blank" rel="noopener">
           Pedir orçamento <ArrowUpRight size={18} weight="bold" aria-hidden />
         </a>
       </div>
@@ -384,10 +384,9 @@ export default function App() {
         <Contato />
       </main>
       <Rodape />
-      <nav className="cta-fixo" aria-label="Contato rápido">
-        <a href={whats()} target="_blank" rel="noopener" className="btn btn-acc">WhatsApp <WhatsappLogo size={20} weight="fill" aria-hidden /></a>
-        <a href={TEL_LINK} className="btn btn-linha bg-concreto">Ligar <Phone size={18} aria-hidden /></a>
-      </nav>
+      <a href={whats()} target="_blank" rel="noopener" className="cta-fixo" aria-label="Pedir orçamento no WhatsApp">
+        <WhatsappLogo size={30} weight="fill" aria-hidden />
+      </a>
     </MotionConfig>
   )
 }
