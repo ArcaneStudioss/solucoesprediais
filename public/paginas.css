@@ -1,0 +1,39 @@
+/* Páginas de apoio (obrigado, política, 404). Mesmos tokens da home, mobile primeiro. */
+@font-face { font-family: "Archivo"; src: url("/fonts/archivo.woff2") format("woff2"); font-weight: 100 900; font-stretch: 62% 125%; font-display: swap; }
+:root { --concreto:#E4E3DF; --placa:#EFEEEA; --junta:#C9C8C3; --tinta:#17181A; --tinta-2:#55575B; --acc:#E2731F; --acc-tinta:#A8500E; }
+* { box-sizing: border-box; }
+html { scrollbar-color: #8c8b87 var(--concreto); scrollbar-width: thin; }
+body { margin: 0; background: var(--concreto); color: var(--tinta); font: 400 17px/1.6 "Archivo", system-ui, sans-serif; -webkit-font-smoothing: antialiased; }
+::selection { background: var(--acc); color: var(--tinta); }
+:focus-visible { outline: 2px solid var(--acc-tinta); outline-offset: 3px; }
+a { color: inherit; }
+.topo { display: flex; align-items: center; gap: 12px; padding: 14px 20px; border-bottom: 1px solid var(--junta); text-decoration: none; }
+.topo img { height: 40px; width: auto; }
+.topo span { font-weight: 600; font-size: 15px; line-height: 1.2; }
+.migalha { padding: 18px 20px 0; font-size: 14px; color: var(--tinta-2); }
+.migalha ol { list-style: none; display: flex; flex-wrap: wrap; gap: 8px; margin: 0; padding: 0; }
+.migalha li + li::before { content: "/"; margin-right: 8px; color: var(--junta); }
+.pagina { max-width: 720px; padding: 28px 20px 72px; }
+h1 { font-size: 38px; line-height: 1.02; letter-spacing: -0.03em; font-weight: 600; font-stretch: 108%; margin: 8px 0 18px; text-wrap: balance; }
+h2 { font-size: 22px; letter-spacing: -0.02em; font-weight: 600; margin: 34px 0 6px; }
+p { color: var(--tinta-2); margin: 0 0 14px; }
+.lead { font-size: 19px; }
+.promessa { color: var(--tinta); font-weight: 500; }
+.acoes { display: flex; flex-direction: column; gap: 10px; margin-top: 28px; }
+.btn { display: inline-flex; align-items: center; justify-content: center; min-height: 52px; padding: 0 22px; border-radius: 4px; font-weight: 600; text-decoration: none; border: 1px solid var(--tinta); }
+.btn-acc { background: var(--acc); border-color: var(--acc); }
+.btn-acc:hover { background: #ec8536; }
+.btn:not(.btn-acc):hover { background: var(--tinta); color: var(--placa); }
+@media (min-width: 768px) {
+  .topo, .migalha { padding-inline: 48px; }
+  .pagina { padding-inline: 48px; padding-top: 48px; }
+  h1 { font-size: 60px; }
+  .acoes { flex-direction: row; }
+}
+.aviso-cookies { position: fixed; z-index: 60; left: 12px; right: 12px; bottom: 12px; padding: 16px; background: var(--tinta); color: var(--placa); border-radius: 4px; font-size: 14px; line-height: 1.5; }
+.aviso-cookies p { color: var(--placa); margin: 0; }
+.aviso-cookies a { color: #f0a25f; }
+.aviso-cookies__acoes { display: flex; gap: 8px; margin-top: 12px; }
+.aviso-cookies button { min-height: 44px; padding: 0 18px; border-radius: 4px; border: 1px solid #4a4b4f; background: transparent; color: var(--placa); font: inherit; font-weight: 600; cursor: pointer; }
+.aviso-cookies button[data-sim] { background: var(--acc); color: var(--tinta); border-color: var(--acc); }
+@media (min-width: 768px) { .aviso-cookies { left: auto; right: 24px; bottom: 24px; max-width: 380px; } }

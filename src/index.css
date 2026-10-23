@@ -1,0 +1,133 @@
+@import "tailwindcss";
+@import "@fontsource-variable/archivo/standard.css";
+@import "@fontsource/jetbrains-mono/400.css";
+@import "@fontsource/jetbrains-mono/500.css";
+
+/* Ötzi · tokens. Mobile primeiro: tudo aqui é celular; PC entra por md:/lg:. */
+@theme {
+  --color-concreto: #E4E3DF;
+  --color-placa: #EFEEEA;
+  --color-junta: #C9C8C3;
+  --color-tinta: #17181A;
+  --color-tinta-2: #55575B;
+  --color-acc: #E2731F;
+  --color-acc-tinta: #A8500E;
+  --color-noite: #1C1D1F;
+  --color-noite-2: #26272A;
+  --color-noite-txt: #A9AAAD;
+
+  --font-sans: "Archivo Variable", "Archivo", system-ui, sans-serif;
+  --font-mono: "JetBrains Mono", ui-monospace, monospace;
+
+  --radius-ot: 4px;
+
+  --animate-marquee: marquee var(--duration) infinite linear;
+  @keyframes marquee {
+    from { transform: translateX(0); }
+    to { transform: translateX(calc(-100% - var(--gap))); }
+  }
+}
+
+@layer base {
+  html { scroll-behavior: smooth; scroll-padding-top: 84px; -webkit-text-size-adjust: 100%; }
+  body {
+    background: var(--color-concreto);
+    color: var(--color-tinta);
+    font-family: var(--font-sans);
+    font-variation-settings: "wdth" 100;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+  h1, h2, h3 { font-weight: 600; letter-spacing: -0.03em; text-wrap: balance; }
+  p { text-wrap: pretty; }
+
+  /* Acabamento do que o navegador desenha (playbooks/native-ui-polish.md) */
+  ::selection { background: var(--color-acc); color: var(--color-tinta); }
+  :focus-visible { outline: 2px solid var(--color-acc-tinta); outline-offset: 3px; border-radius: 2px; }
+  html { scrollbar-color: #8c8b87 var(--color-concreto); scrollbar-width: thin; }
+  ::-webkit-scrollbar { width: 10px; height: 10px; }
+  ::-webkit-scrollbar-track { background: var(--color-concreto); }
+  ::-webkit-scrollbar-thumb { background: #8c8b87; border-radius: 10px; border: 2px solid var(--color-concreto); }
+  ::-webkit-scrollbar-thumb:hover { background: var(--color-tinta-2); }
+  summary { list-style: none; cursor: pointer; }
+  summary::-webkit-details-marker { display: none; }
+  img { max-width: 100%; height: auto; }
+}
+
+@layer components {
+  .wrap { width: 100%; max-width: 1280px; margin-inline: auto; padding-inline: 20px; }
+  @media (min-width: 768px) { .wrap { padding-inline: 48px; } }
+  @media (min-width: 1024px) { .wrap { padding-inline: 96px; } }
+
+  .rotulo { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.14em; text-transform: uppercase; }
+
+  .btn {
+    display: inline-flex; align-items: center; justify-content: space-between; gap: 14px;
+    min-height: 52px; padding: 0 22px; border-radius: var(--radius-ot);
+    font-weight: 600; font-size: 16px; line-height: 1.1;
+    transition: transform .25s cubic-bezier(.2,.8,.2,1), background-color .2s, color .2s, border-color .2s;
+  }
+  .btn:active { transform: scale(.98); }
+  .btn svg { transition: transform .25s cubic-bezier(.2,.8,.2,1); flex: none; }
+  .btn:hover svg { transform: translate(2px,-2px); }
+  .btn-acc { background: var(--color-acc); color: var(--color-tinta); }
+  .btn-acc:hover { background: #ec8536; }
+  .btn-linha { border: 1px solid var(--color-tinta); color: var(--color-tinta); }
+  .btn-linha:hover { background: var(--color-tinta); color: var(--color-placa); }
+  .btn-noite { border: 1px solid #4a4b4f; color: var(--color-placa); }
+  .btn-noite:hover { border-color: var(--color-placa); }
+
+  /* corda: fio torcido em listras finas */
+  .rope-fio { background: repeating-linear-gradient(180deg, #b9b8b3 0 6px, #a6a5a0 6px 9px); }
+
+  /* placa da fachada (teste de percussão) */
+  .placa {
+    position: relative; aspect-ratio: 1 / 1; border-radius: 2px;
+    background: var(--tom, var(--color-placa));
+    box-shadow: inset 0 -1px 0 rgb(0 0 0 / .06), inset 0 1px 0 rgb(255 255 255 / .5);
+    transition: transform .18s cubic-bezier(.2,.8,.2,1), background-color .3s;
+  }
+  @media (min-width: 1024px) { .placa { aspect-ratio: 3 / 2; } }
+  .placa:hover { transform: scale(.96); }
+  .placa:active { transform: scale(.92); }
+  .placa[data-estado="cheio"] { background: #f7f6f2; }
+  .placa[data-estado="cheio"]::after {
+    content: ""; position: absolute; inset: 38%; border-radius: 50%; background: #9c9b96; opacity: .55;
+  }
+  .placa[data-estado="cavo"] {
+    background: repeating-linear-gradient(135deg, var(--color-acc) 0 5px, #ee8a3e 5px 10px);
+  }
+
+  /* CTA fixo no celular (item 9) */
+  .cta-fixo {
+    position: fixed; inset: auto 0 0 0; z-index: 40; display: grid; grid-template-columns: 1.4fr 1fr; gap: 8px;
+    padding: 10px 12px calc(10px + env(safe-area-inset-bottom));
+    background: rgb(228 227 223 / .94); border-top: 1px solid var(--color-junta);
+    backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px);
+  }
+  .cta-fixo .btn { min-height: 48px; font-size: 15px; }
+  @media (min-width: 768px) { .cta-fixo { display: none; } }
+  body.tem-cta-fixo { padding-bottom: 76px; }
+  @media (min-width: 768px) { body.tem-cta-fixo { padding-bottom: 0; } }
+
+  /* aviso de cookies (arcane-analytics.js) */
+  .aviso-cookies {
+    position: fixed; z-index: 60; left: 12px; right: 12px; bottom: 88px; padding: 16px;
+    background: var(--color-tinta); color: var(--color-placa); border-radius: var(--radius-ot); font-size: 14px; line-height: 1.5;
+    box-shadow: 0 20px 40px -20px rgb(0 0 0 / .5);
+  }
+  .aviso-cookies a { color: #f0a25f; text-decoration: underline; }
+  .aviso-cookies__acoes { display: flex; gap: 8px; margin-top: 12px; }
+  .aviso-cookies button { min-height: 44px; padding: 0 18px; border-radius: var(--radius-ot); border: 1px solid #4a4b4f; font-weight: 600; }
+  .aviso-cookies button[data-sim] { background: var(--color-acc); color: var(--color-tinta); border-color: var(--color-acc); }
+  @media (min-width: 768px) { .aviso-cookies { left: auto; right: 24px; bottom: 24px; max-width: 380px; } }
+
+  .faq summary .mais { transition: transform .3s cubic-bezier(.2,.8,.2,1); }
+  .faq[open] summary .mais { transform: rotate(45deg); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+  .animate-marquee { animation: none !important; }
+}
