@@ -12,8 +12,8 @@ Síndicos (profissionais e moradores), administradoras de condomínio, gestores 
 
 ## Funções da primeira versão
 1. Passar confiança técnica em 5 segundos (herói com foto real de acesso por corda, norma e NR-35).
-2. Explicar o teste de percussão de um jeito que o síndico entenda: fachada interativa onde ele "bate" nas placas.
-3. Apresentar os 4 serviços: inspeção de fachada (NBR 13.755), pintura de fachada, hidráulica predial, trabalho em altura.
+2. Apresentar os serviços em cartões diretos, cada um levando ao WhatsApp com mensagem pronta.
+3. Os 4 serviços: inspeção de fachada (NBR 13.755), pintura de fachada, hidráulica predial, trabalho em altura.
 4. Mostrar o processo (visita, laudo, execução, entrega) e a segurança.
 5. Levar ao WhatsApp com mensagem pronta (CTA fixo no celular).
 6. FAQ, política de privacidade, obrigado, 404, SEO local.

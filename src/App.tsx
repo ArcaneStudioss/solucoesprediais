@@ -1,33 +1,35 @@
 import { MotionConfig, motion } from 'motion/react'
-import { ArrowUpRight, WhatsappLogo, Phone, InstagramLogo, Plus, CheckCircle } from '@phosphor-icons/react'
+import { ArrowUpRight, WhatsappLogo, Phone, InstagramLogo, Plus, CheckCircle, MagnifyingGlass, PaintRoller, Drop, HardHat } from '@phosphor-icons/react'
 import { TextEffect } from '@/components/ui/text-effect'
 import { InView } from '@/components/ui/in-view'
-import { Marquee } from '@/components/ui/marquee'
 import { RopeBeam } from '@/components/ui/rope-beam'
-import { Percussao } from '@/sections/Percussao'
 import { revelar, emCascata, vista, EASE } from '@/sections/motion'
 import { whats, TELEFONE, TEL_LINK, INSTAGRAM, AREA } from '@/content'
 
 const SERVICOS = [
   {
+    Icone: MagnifyingGlass,
     tag: 'NBR 13.755',
     nome: 'Inspeção de fachadas',
     texto: 'Teste de percussão placa por placa, mapa das áreas com som cavo e relatório com fotos para levar à assembleia.',
     msg: 'Olá! Vim pelo site e quero orçar uma inspeção de fachada (teste de percussão).',
   },
   {
+    Icone: PaintRoller,
     tag: 'Acesso por corda',
     nome: 'Pintura de fachadas',
     texto: 'Proteção contra intempéries e acabamento profissional, sem andaime ocupando a calçada e a garagem.',
     msg: 'Olá! Vim pelo site e quero orçar a pintura da fachada do prédio.',
   },
   {
+    Icone: Drop,
     tag: 'Água e bombas',
     nome: 'Hidráulica predial',
     texto: 'Correção de vazamentos, limpeza de caixas d’água, manutenção de bombas e adequação de redes prediais.',
     msg: 'Olá! Vim pelo site e preciso de um serviço de hidráulica predial.',
   },
   {
+    Icone: HardHat,
     tag: 'NR‑35',
     nome: 'Trabalho em altura',
     texto: 'Equipe treinada e segura para os serviços onde o andaime não chega ou não compensa.',
@@ -52,21 +54,21 @@ const DUVIDAS = [
 
 function Cabecalho() {
   return (
-    <header className="sticky top-0 z-40 border-b border-junta/70 bg-concreto/90 backdrop-blur-md">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-noite/80 text-placa backdrop-blur-xl">
       <div className="wrap flex h-[68px] items-center justify-between lg:h-[76px]">
         <a href="/" className="flex items-center gap-3" aria-label="Ötzi Soluções Prediais, início">
-          <img src="/img/otzi-logo-ink-sm.png" alt="" width="40" height="44" className="h-10 w-auto lg:h-12" />
+          <img src="/img/otzi-logo-light-sm.png" alt="" width="40" height="44" className="h-10 w-auto lg:h-12" />
           <span className="hidden text-[15px] font-semibold leading-tight tracking-tight sm:block">
-            Ötzi<br /><span className="font-normal text-tinta-2">Soluções Prediais</span>
+            Ötzi<br /><span className="font-normal text-noite-txt">Soluções Prediais</span>
           </span>
         </a>
         <nav aria-label="Principal" className="hidden items-center gap-9 text-[15px] font-medium lg:flex">
-          <a href="#servicos" className="hover:text-acc-tinta">Serviços</a>
-          <a href="#percussao" className="hover:text-acc-tinta">Teste de percussão</a>
-          <a href="#processo" className="hover:text-acc-tinta">Como trabalhamos</a>
-          <a href="#duvidas" className="hover:text-acc-tinta">Dúvidas</a>
+          <a href="#servicos" className="text-noite-txt transition-colors hover:text-placa">Serviços</a>
+          <a href="#processo" className="text-noite-txt transition-colors hover:text-placa">Como trabalhamos</a>
+          <a href="#seguranca" className="text-noite-txt transition-colors hover:text-placa">Segurança</a>
+          <a href="#duvidas" className="text-noite-txt transition-colors hover:text-placa">Dúvidas</a>
         </nav>
-        <a href={whats()} className="btn btn-acc !min-h-11 !px-4 text-[15px] max-md:hidden" target="_blank" rel="noopener">
+        <a href={whats()} className="btn btn-acc !min-h-11 !px-5 text-[15px] max-md:hidden" target="_blank" rel="noopener">
           Pedir orçamento <ArrowUpRight size={18} weight="bold" aria-hidden />
         </a>
       </div>
@@ -76,8 +78,10 @@ function Cabecalho() {
 
 function Heroi() {
   return (
-    <section className="relative overflow-hidden">
-      <div className="wrap grid gap-10 pb-14 pt-8 md:pt-12 lg:min-h-[calc(100dvh-76px)] lg:grid-cols-12 lg:items-center lg:gap-16 lg:py-14">
+    <section className="relative overflow-hidden bg-noite text-placa">
+      <div aria-hidden className="pointer-events-none absolute -right-40 top-[-10%] size-[620px] rounded-full bg-acc/25 blur-[140px]" />
+      <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_30%_20%,#000,transparent_70%)]" />
+      <div className="wrap relative grid gap-10 pb-16 pt-10 md:pt-14 lg:min-h-[calc(100dvh-76px)] lg:grid-cols-12 lg:items-center lg:gap-14 lg:py-16">
         <div className="lg:col-span-7">
           <TextEffect
             as="h1"
@@ -89,14 +93,14 @@ function Heroi() {
             Fachadas seguras, do topo ao chão.
           </TextEffect>
           <InView variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0, transition: { delay: 0.55, duration: 0.7, ease: EASE } } }}>
-            <p className="mt-6 max-w-[40ch] text-lg leading-relaxed text-tinta-2 lg:mt-8 lg:text-xl">
-              Inspeção, pintura e manutenção predial com acesso por corda, equipe NR‑35 e teste de percussão conforme a NBR 13.755.
+            <p className="mt-6 max-w-[40ch] text-lg leading-relaxed text-noite-txt lg:mt-8 lg:text-xl">
+              Inspeção, pintura e manutenção predial com acesso por corda e equipe NR‑35.
             </p>
             <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-10">
               <a href={whats()} target="_blank" rel="noopener" className="btn btn-acc sm:min-w-[300px]">
                 Pedir orçamento no WhatsApp <WhatsappLogo size={22} weight="fill" aria-hidden />
               </a>
-              <a href="#servicos" className="btn btn-linha">
+              <a href="#servicos" className="btn btn-vidro">
                 Ver serviços <ArrowUpRight size={18} weight="bold" aria-hidden className="rotate-90" />
               </a>
             </div>
@@ -104,9 +108,9 @@ function Heroi() {
         </div>
         <motion.figure
           className="relative lg:col-span-5"
-          initial={{ opacity: 0, clipPath: 'inset(0 0 100% 0)' }}
-          animate={{ opacity: 1, clipPath: 'inset(0 0 0% 0)' }}
-          transition={{ duration: 1.1, ease: EASE, delay: 0.15 }}
+          initial={{ opacity: 0, y: 40, scale: 0.97 }}
+          animate={{ opacity: 1, y: 0, scale: 1 }}
+          transition={{ duration: 1, ease: EASE, delay: 0.2 }}
         >
           <img
             src="/img/alpinista-teste-percussao-fachada.webp"
@@ -115,11 +119,11 @@ function Heroi() {
             width="570"
             height="712"
             alt="Profissional da Ötzi pendurado por cordas na fachada de um prédio, fazendo teste de percussão no revestimento"
-            className="aspect-[4/5] w-full rounded-[4px] object-cover object-[50%_35%] lg:max-h-[calc(100dvh-180px)]"
-            {...{ fetchpriority: "high" }}
+            className="aspect-[4/5] w-full rounded-[24px] object-cover object-[50%_35%] ring-1 ring-white/15 lg:max-h-[calc(100dvh-180px)]"
+            {...{ fetchpriority: 'high' }}
           />
-          <figcaption className="rotulo mt-3 flex items-center gap-3 text-[11px] text-tinta-2">
-            <span className="block h-px w-8 bg-acc" aria-hidden /> Teste de percussão em fachada
+          <figcaption className="absolute bottom-4 left-4 rounded-full bg-noite/75 px-4 py-2 text-[13px] font-medium backdrop-blur-md">
+            NBR 13.755 · teste de percussão
           </figcaption>
         </motion.figure>
       </div>
@@ -127,51 +131,42 @@ function Heroi() {
   )
 }
 
-function Faixa() {
-  const itens = ['Teste de percussão', 'Pintura de fachadas', 'Hidráulica predial', 'Acesso por corda', 'Trabalho em altura NR‑35', 'Inspeção de revestimentos']
-  return (
-    <div className="bg-tinta py-4 text-placa lg:py-5" aria-hidden="true">
-      <Marquee className="p-0 [--duration:38s] [--gap:2.5rem]" repeat={3}>
-        {itens.map(t => (
-          <span key={t} className="flex items-center gap-10 whitespace-nowrap text-lg font-medium [font-stretch:110%] lg:text-xl">
-            {t}<i className="block size-2 bg-acc" />
-          </span>
-        ))}
-      </Marquee>
-    </div>
-  )
-}
-
 function Servicos() {
+  const span = ['lg:col-span-7', 'lg:col-span-5', 'lg:col-span-5', 'lg:col-span-7']
   return (
-    <section id="servicos" aria-labelledby="servicos-titulo" className="bg-placa py-16 md:py-24 lg:py-32">
+    <section id="servicos" aria-labelledby="servicos-titulo" className="py-16 md:py-24 lg:py-32">
       <div className="wrap">
         <InView variants={revelar} viewOptions={vista}>
-          <h2 id="servicos-titulo" className="max-w-[16ch] text-[34px] leading-[1.02] md:text-5xl lg:text-[52px]">
+          <h2 id="servicos-titulo" className="max-w-[16ch] text-[34px] leading-[1.02] md:text-5xl lg:text-[56px]">
             O que fazemos pelo seu prédio
           </h2>
         </InView>
-        <InView variants={emCascata} viewOptions={vista} as="ul">
-          {SERVICOS.map((s, i) => (
-            <motion.li key={s.nome} variants={revelar} className={i === 0 ? 'mt-10 border-t border-junta lg:mt-16' : ''}>
-              <a
-                href={whats(s.msg)} target="_blank" rel="noopener"
-                className="group grid gap-3 border-b border-junta py-7 transition-colors lg:grid-cols-12 lg:items-center lg:gap-8 lg:py-10"
-              >
-                <p className="rotulo text-acc-tinta lg:col-span-2">{s.tag}</p>
-                <h3 className="text-[28px] leading-tight [font-stretch:108%] transition-transform duration-300 group-hover:translate-x-1 lg:col-span-4 lg:text-[40px]">
-                  {s.nome}
-                </h3>
-                <p className="max-w-[52ch] leading-relaxed text-tinta-2 lg:col-span-5 lg:text-[17px]">{s.texto}</p>
-                <span className="mt-1 inline-flex items-center gap-2 text-sm font-semibold lg:col-span-1 lg:mt-0 lg:justify-self-end">
-                  <span className="lg:sr-only">Pedir orçamento</span>
-                  <span className="grid size-11 place-items-center rounded-full border border-tinta transition-colors duration-300 group-hover:border-acc group-hover:bg-acc">
-                    <ArrowUpRight size={18} weight="bold" aria-hidden />
-                  </span>
-                </span>
-              </a>
-            </motion.li>
-          ))}
+        <InView variants={emCascata} viewOptions={vista}>
+          <ul className="mt-10 grid gap-4 lg:mt-14 lg:grid-cols-12 lg:gap-5">
+            {SERVICOS.map(({ Icone, tag, nome, texto, msg }, i) => (
+              <motion.li key={nome} variants={revelar} className={span[i]}>
+                <a
+                  href={whats(msg)} target="_blank" rel="noopener"
+                  className={`group relative flex h-full min-h-[260px] flex-col justify-between gap-10 overflow-hidden rounded-[20px] p-6 transition-transform duration-300 hover:-translate-y-1 md:p-8 ${i === 0 ? 'bg-noite text-placa' : i === 3 ? 'bg-acc text-tinta' : 'bg-placa text-tinta'}`}
+                >
+                  <div className="flex items-start justify-between">
+                    <span className={`grid size-12 place-items-center rounded-full ${i === 0 ? 'bg-acc text-tinta' : i === 3 ? 'bg-tinta text-placa' : 'bg-concreto text-tinta'}`}>
+                      <Icone size={24} weight="duotone" aria-hidden />
+                    </span>
+                    <span className="rotulo opacity-70">{tag}</span>
+                  </div>
+                  <div>
+                    <h3 className="text-[28px] leading-tight [font-stretch:108%] lg:text-[34px]">{nome}</h3>
+                    <p className={`mt-3 max-w-[44ch] leading-relaxed ${i === 0 ? 'text-noite-txt' : i === 3 ? 'text-tinta/80' : 'text-tinta-2'}`}>{texto}</p>
+                    <span className="mt-6 inline-flex items-center gap-2 text-[15px] font-semibold">
+                      Pedir orçamento
+                      <ArrowUpRight size={18} weight="bold" className="transition-transform duration-300 group-hover:translate-x-1 group-hover:-translate-y-1" aria-hidden />
+                    </span>
+                  </div>
+                </a>
+              </motion.li>
+            ))}
+          </ul>
         </InView>
       </div>
     </section>
@@ -219,7 +214,7 @@ function Processo() {
 function Seguranca() {
   const itens = ['Dupla ancoragem em toda descida', 'Equipamentos inspecionados antes de cada serviço', 'Equipe treinada conforme a NR‑35']
   return (
-    <section aria-labelledby="seguranca-titulo" className="bg-noite py-16 text-placa md:py-24 lg:py-32">
+    <section id="seguranca" aria-labelledby="seguranca-titulo" className="bg-noite py-16 text-placa md:py-24 lg:py-32">
       <div className="wrap grid gap-10 lg:grid-cols-12 lg:items-center lg:gap-16">
         <div className="lg:col-span-7">
         <InView variants={revelar} viewOptions={vista}>
@@ -249,7 +244,7 @@ function Seguranca() {
               height="560"
               loading="lazy"
               alt="Detalhe do equipamento de ancoragem e das cordas presos ao cinto do profissional durante o trabalho na fachada"
-              className="aspect-[4/5] w-full rounded-[4px] object-cover"
+              className="aspect-[4/5] w-full rounded-[24px] object-cover"
             />
             <figcaption className="rotulo mt-3 text-[11px] text-noite-txt">Equipamento de ancoragem em uso</figcaption>
           </figure>
@@ -265,7 +260,7 @@ function Trabalhos() {
     <section id="trabalhos" aria-labelledby="trabalhos-titulo" className="py-16 md:py-24">
       <div className="wrap">
         <InView variants={revelar} viewOptions={vista}>
-          <div className="grid gap-6 rounded-[4px] border border-junta p-6 md:p-10 lg:grid-cols-12 lg:items-center lg:gap-10">
+          <div className="grid gap-6 rounded-[24px] border border-junta bg-placa p-6 md:p-10 lg:grid-cols-12 lg:items-center lg:gap-10">
             <h2 id="trabalhos-titulo" className="text-[28px] leading-tight lg:col-span-5 lg:text-[40px]">Obras e bastidores</h2>
             <p className="leading-relaxed text-tinta-2 lg:col-span-4">
               Cada fachada conta uma história. Acompanhe as descidas, os testes e as entregas no nosso Instagram.
@@ -367,16 +362,14 @@ function Rodape() {
 export default function App() {
   return (
     <MotionConfig reducedMotion="user">
-      <a href="#conteudo" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-[4px] focus:bg-tinta focus:px-4 focus:py-3 focus:text-placa">
+      <a href="#conteudo" className="sr-only focus:not-sr-only focus:fixed focus:left-3 focus:top-3 focus:z-50 focus:rounded-full focus:bg-tinta focus:px-4 focus:py-3 focus:text-placa">
         Pular para o conteúdo
       </a>
       <RopeBeam />
       <Cabecalho />
       <main id="conteudo">
         <Heroi />
-        <Faixa />
-        <Percussao />
-        <Servicos />
+                <Servicos />
         <Processo />
         <Seguranca />
         <Trabalhos />

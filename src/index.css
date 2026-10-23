@@ -19,7 +19,7 @@
   --font-sans: "Archivo Variable", "Archivo", system-ui, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, monospace;
 
-  --radius-ot: 4px;
+  --radius-ot: 999px;
 
   --animate-marquee: marquee var(--duration) infinite linear;
   @keyframes marquee {
@@ -74,29 +74,11 @@
   .btn-acc:hover { background: #ec8536; }
   .btn-linha { border: 1px solid var(--color-tinta); color: var(--color-tinta); }
   .btn-linha:hover { background: var(--color-tinta); color: var(--color-placa); }
-  .btn-noite { border: 1px solid #4a4b4f; color: var(--color-placa); }
-  .btn-noite:hover { border-color: var(--color-placa); }
+  .btn-vidro { border: 1px solid rgb(255 255 255 / .28); color: var(--color-placa); background: rgb(255 255 255 / .06); backdrop-filter: blur(8px); }
+  .btn-vidro:hover { background: var(--color-placa); color: var(--color-tinta); border-color: var(--color-placa); }
 
   /* corda: fio torcido em listras finas */
   .rope-fio { background: repeating-linear-gradient(180deg, #b9b8b3 0 6px, #a6a5a0 6px 9px); }
-
-  /* placa da fachada (teste de percussão) */
-  .placa {
-    position: relative; aspect-ratio: 1 / 1; border-radius: 2px;
-    background: var(--tom, var(--color-placa));
-    box-shadow: inset 0 -1px 0 rgb(0 0 0 / .06), inset 0 1px 0 rgb(255 255 255 / .5);
-    transition: transform .18s cubic-bezier(.2,.8,.2,1), background-color .3s;
-  }
-  @media (min-width: 1024px) { .placa { aspect-ratio: 3 / 2; } }
-  .placa:hover { transform: scale(.96); }
-  .placa:active { transform: scale(.92); }
-  .placa[data-estado="cheio"] { background: #f7f6f2; }
-  .placa[data-estado="cheio"]::after {
-    content: ""; position: absolute; inset: 38%; border-radius: 50%; background: #9c9b96; opacity: .55;
-  }
-  .placa[data-estado="cavo"] {
-    background: repeating-linear-gradient(135deg, var(--color-acc) 0 5px, #ee8a3e 5px 10px);
-  }
 
   /* Botão fixo do WhatsApp no canto (item 9): só o símbolo */
   .cta-fixo {
@@ -113,7 +95,7 @@
   /* aviso de cookies (arcane-analytics.js) */
   .aviso-cookies {
     position: fixed; z-index: 60; left: 12px; right: 12px; bottom: 90px; padding: 16px;
-    background: var(--color-tinta); color: var(--color-placa); border-radius: var(--radius-ot); font-size: 14px; line-height: 1.5;
+    background: var(--color-tinta); color: var(--color-placa); border-radius: 20px; font-size: 14px; line-height: 1.5;
     box-shadow: 0 20px 40px -20px rgb(0 0 0 / .5);
   }
   .aviso-cookies a { color: #f0a25f; text-decoration: underline; }

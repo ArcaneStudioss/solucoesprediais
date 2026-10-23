@@ -13,7 +13,7 @@ npm run build    # gera dist/ com a home pré-renderizada
 ```
 
 ## Peças
-- Vite + React + Tailwind 4 + Motion. Componentes de animação da biblioteca 21st.dev em `src/components/ui/` (Text Effect e In View da Motion Primitives, Marquee da Magic UI, Tracing Beam da Aceternity adaptado como "corda"), todos MIT.
+- Vite + React + Tailwind 4 + Motion. Componentes de animação da biblioteca 21st.dev em `src/components/ui/` (Text Effect e In View da Motion Primitives, Tracing Beam da Aceternity adaptado como "corda"), todos MIT.
 - `scripts/prerender.mjs`: escreve o HTML da home no build (Google e visitante sem JavaScript veem a página inteira).
 - Dados do cliente (telefone, área, domínio): `src/content.ts`.
 - Páginas de apoio estáticas em `public/` (obrigado, política de privacidade, 404).
