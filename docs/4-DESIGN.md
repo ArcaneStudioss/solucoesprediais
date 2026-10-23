@@ -4,7 +4,7 @@
 
 **Metáfora do negócio:** *a descida pela fachada.* Uma corda laranja desce pela lateral no PC e termina em "0 m · no chão" no contato. Sem jogos nem enfeites: a página é direta, focada em serviço e orçamento.
 
-**Visual (revisão de 23/10, pedido do Gabriel: mais focado e mais moderno):** topo escuro com brilho laranja e grade sutil, cartões grandes em formato de bento (4 serviços, 4 células), cantos arredondados (20 a 24 px, botões em pílula), cabeçalho de vidro escuro. Seções: topo, serviços, etapas, segurança, Instagram, dúvidas, contato.
+**Visual (revisão de 23/10, pedido do Gabriel: mais focado e mais moderno; 2ª melhoria no mesmo dia: foto maior no topo, faixa de credenciais NBR/NR-35/corda, números grandes nas etapas, bloco escuro em "Obras e bastidores" e contato em laranja, como chegada ao chão):** topo escuro com brilho laranja e grade sutil, cartões grandes em formato de bento (4 serviços, 4 células), cantos arredondados (20 a 24 px, botões em pílula), cabeçalho de vidro escuro. Seções: topo, serviços, etapas, segurança, Instagram, dúvidas, contato.
 
 | Item | Regra |
 |---|---|

@@ -37,6 +37,12 @@ const SERVICOS = [
   },
 ]
 
+const CREDENCIAIS = [
+  ['NBR 13.755', 'Inspeção de fachada com teste de percussão'],
+  ['NR‑35', 'Equipe treinada para trabalho em altura'],
+  ['Acesso por corda', 'Sem andaime na calçada nem na garagem'],
+]
+
 const PASSOS = [
   ['Visita técnica', 'Olhamos o prédio, conversamos com o síndico e entendemos a urgência de cada ponto.'],
   ['Diagnóstico e proposta', 'Você recebe o que encontramos, com fotos, e um orçamento por escrito.'],
@@ -54,7 +60,7 @@ const DUVIDAS = [
 
 function Cabecalho() {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/10 bg-noite/80 text-placa backdrop-blur-xl">
+    <header className="sticky top-0 z-40 border-b border-white/10 bg-noite/95 text-placa backdrop-blur-xl">
       <div className="wrap flex h-[68px] items-center justify-between lg:h-[76px]">
         <a href="/" className="flex items-center gap-3" aria-label="Ötzi Soluções Prediais, início">
           <img src="/img/otzi-logo-light-sm.png" alt="" width="40" height="44" className="h-10 w-auto lg:h-12" />
@@ -81,14 +87,15 @@ function Heroi() {
     <section className="relative overflow-hidden bg-noite text-placa">
       <div aria-hidden className="pointer-events-none absolute -right-40 top-[-10%] size-[620px] rounded-full bg-acc/25 blur-[140px]" />
       <div aria-hidden className="pointer-events-none absolute inset-0 opacity-[0.07] [background-image:linear-gradient(#fff_1px,transparent_1px),linear-gradient(90deg,#fff_1px,transparent_1px)] [background-size:56px_56px] [mask-image:radial-gradient(ellipse_at_30%_20%,#000,transparent_70%)]" />
-      <div className="wrap relative grid gap-10 pb-16 pt-10 md:pt-14 lg:min-h-[calc(100dvh-76px)] lg:grid-cols-12 lg:items-center lg:gap-14 lg:py-16">
-        <div className="lg:col-span-7">
+      <div className="wrap relative flex flex-col lg:min-h-[calc(100dvh-76px)]">
+      <div className="grid flex-1 gap-10 pb-12 pt-10 md:pt-14 lg:grid-cols-12 lg:items-center lg:gap-12 lg:py-14">
+        <div className="lg:col-span-6">
           <TextEffect
             as="h1"
             per="word"
             preset="fade-in-blur"
             speedReveal={1.1}
-            className="text-[44px] leading-[0.98] [font-stretch:108%] sm:text-6xl lg:text-[82px] xl:text-[92px]"
+            className="text-[44px] leading-[0.98] [font-stretch:104%] sm:text-6xl lg:text-[68px] xl:text-[84px]"
           >
             Fachadas seguras, do topo ao chão.
           </TextEffect>
@@ -107,7 +114,7 @@ function Heroi() {
           </InView>
         </div>
         <motion.figure
-          className="relative lg:col-span-5"
+          className="relative lg:col-span-6 lg:justify-self-end lg:w-[min(100%,540px)]"
           initial={{ opacity: 0, y: 40, scale: 0.97 }}
           animate={{ opacity: 1, y: 0, scale: 1 }}
           transition={{ duration: 1, ease: EASE, delay: 0.2 }}
@@ -115,17 +122,28 @@ function Heroi() {
           <img
             src="/img/alpinista-teste-percussao-fachada.webp"
             srcSet="/img/alpinista-teste-percussao-fachada-400.webp 400w, /img/alpinista-teste-percussao-fachada.webp 570w"
-            sizes="(min-width: 1024px) 34vw, 100vw"
+            sizes="(min-width: 1024px) 540px, 100vw"
             width="570"
             height="712"
             alt="Profissional da Ötzi pendurado por cordas na fachada de um prédio, fazendo teste de percussão no revestimento"
-            className="aspect-[4/5] w-full rounded-[24px] object-cover object-[50%_35%] ring-1 ring-white/15 lg:max-h-[calc(100dvh-180px)]"
+            className="aspect-[4/5] w-full rounded-[28px] object-cover object-[50%_35%] ring-1 ring-white/15 lg:max-h-[calc(100dvh-300px)]"
             {...{ fetchpriority: 'high' }}
           />
           <figcaption className="absolute bottom-4 left-4 rounded-full bg-noite/75 px-4 py-2 text-[13px] font-medium backdrop-blur-md">
             NBR 13.755 · teste de percussão
           </figcaption>
         </motion.figure>
+      </div>
+      <InView variants={{ hidden: { opacity: 0 }, visible: { opacity: 1, transition: { delay: 0.9, duration: 0.8 } } }}>
+        <dl className="grid border-t border-white/10 sm:grid-cols-3">
+          {CREDENCIAIS.map(([t, d], i) => (
+            <div key={t} className={`py-4 sm:py-6 ${i > 0 ? 'border-t border-white/10 sm:border-l sm:border-t-0 sm:pl-8' : ''}`}>
+              <dt className="text-xl font-semibold tracking-tight text-placa lg:text-2xl">{t}</dt>
+              <dd className="mt-1 text-[15px] leading-snug text-noite-txt">{d}</dd>
+            </div>
+          ))}
+        </dl>
+      </InView>
       </div>
     </section>
   )
@@ -198,8 +216,8 @@ function Processo() {
             {PASSOS.map(([t, d], i) => (
               <motion.li key={t} variants={revelar} className="relative pb-9 pl-7 last:pb-0 lg:pb-0 lg:pl-0 lg:pt-9">
                 <span aria-hidden className="absolute -left-[7px] top-1 block size-4 rounded-full border-2 border-acc bg-concreto lg:-top-[7px] lg:left-0" />
-                <p className="rotulo text-tinta-2">Etapa {i + 1}</p>
-                <h3 className="mt-2 text-2xl leading-tight">{t}</h3>
+                <p aria-hidden className="text-[56px] font-semibold leading-none tracking-tighter text-acc [font-stretch:110%] lg:text-[72px]">{i + 1}</p>
+                <h3 className="mt-3 text-2xl leading-tight"><span className="sr-only">Etapa {i + 1}: </span>{t}</h3>
                 <p className="mt-3 max-w-[34ch] leading-relaxed text-tinta-2">{d}</p>
               </motion.li>
             ))}
@@ -260,12 +278,13 @@ function Trabalhos() {
     <section id="trabalhos" aria-labelledby="trabalhos-titulo" className="py-16 md:py-24">
       <div className="wrap">
         <InView variants={revelar} viewOptions={vista}>
-          <div className="grid gap-6 rounded-[24px] border border-junta bg-placa p-6 md:p-10 lg:grid-cols-12 lg:items-center lg:gap-10">
-            <h2 id="trabalhos-titulo" className="text-[28px] leading-tight lg:col-span-5 lg:text-[40px]">Obras e bastidores</h2>
-            <p className="leading-relaxed text-tinta-2 lg:col-span-4">
+          <div className="relative isolate grid gap-6 overflow-hidden rounded-[28px] bg-noite p-7 text-placa md:p-12 lg:grid-cols-12 lg:items-center lg:gap-10">
+            <div aria-hidden className="pointer-events-none absolute -right-24 -top-32 -z-10 size-[420px] rounded-full bg-acc/25 blur-[110px]" />
+            <h2 id="trabalhos-titulo" className="text-[30px] leading-tight lg:col-span-5 lg:text-[44px]">Obras e bastidores</h2>
+            <p className="leading-relaxed text-noite-txt lg:col-span-4">
               Cada fachada conta uma história. Acompanhe as descidas, os testes e as entregas no nosso Instagram.
             </p>
-            <a href={INSTAGRAM} target="_blank" rel="noopener" className="btn btn-linha lg:col-span-3">
+            <a href={INSTAGRAM} target="_blank" rel="noopener" className="btn btn-vidro lg:col-span-3">
               Ver no Instagram <InstagramLogo size={20} aria-hidden />
             </a>
           </div>
@@ -302,36 +321,36 @@ function Duvidas() {
 
 function Contato() {
   return (
-    <section id="contato" aria-labelledby="contato-titulo" className="relative overflow-hidden bg-placa py-16 md:py-24 lg:py-32">
+    <section id="contato" aria-labelledby="contato-titulo" className="relative overflow-hidden bg-acc py-16 text-tinta md:py-24 lg:py-32">
       <div aria-hidden className="pointer-events-none absolute inset-y-0 right-[14%] hidden w-40 lg:block">
         <motion.span
-          className="absolute left-1/2 top-0 block h-[calc(100%-96px)] w-[2px] origin-top bg-acc"
+          className="absolute left-1/2 top-0 block h-[calc(100%-96px)] w-[2px] origin-top bg-tinta"
           initial={{ scaleY: 0 }}
           whileInView={{ scaleY: 1 }}
           viewport={{ once: true, margin: '0px 0px -20% 0px' }}
           transition={{ duration: 1.4, ease: EASE }}
         />
-        <span className="absolute bottom-[88px] left-1/2 block size-4 -translate-x-1/2 rounded-full border-2 border-acc bg-placa" />
+        <span className="absolute bottom-[88px] left-1/2 block size-4 -translate-x-1/2 rounded-full border-2 border-tinta bg-acc" />
         <span className="absolute bottom-[80px] left-0 right-0 block h-px bg-tinta" />
-        <span className="rotulo absolute bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap normal-case text-tinta-2">0 m · no chão</span>
+        <span className="rotulo absolute bottom-12 left-1/2 -translate-x-1/2 whitespace-nowrap normal-case text-tinta">0 m · no chão</span>
       </div>
       <div className="wrap relative">
         <InView variants={revelar} viewOptions={vista}>
           <h2 id="contato-titulo" className="max-w-[13ch] text-[44px] leading-[0.98] [font-stretch:108%] md:text-6xl lg:text-[92px]">
             Vamos olhar a sua fachada?
           </h2>
-          <p className="promessa mt-6 max-w-[42ch] text-lg leading-relaxed text-tinta-2 lg:text-xl" data-resposta>
+          <p className="promessa mt-6 max-w-[42ch] text-lg leading-relaxed text-tinta/80 lg:text-xl" data-resposta>
             Mande uma foto do prédio pelo WhatsApp. Respondemos no mesmo dia útil com os próximos passos.
           </p>
           <div className="mt-8 flex flex-col gap-3 sm:flex-row lg:mt-10">
-            <a href={whats()} target="_blank" rel="noopener" className="btn btn-acc sm:min-w-[280px]">
+            <a href={whats()} target="_blank" rel="noopener" className="btn btn-escuro sm:min-w-[280px]">
               Chamar no WhatsApp <WhatsappLogo size={22} weight="fill" aria-hidden />
             </a>
-            <a href={TEL_LINK} className="btn btn-linha">
+            <a href={TEL_LINK} className="btn btn-linha !border-tinta/70">
               Ligar {TELEFONE} <Phone size={20} aria-hidden />
             </a>
           </div>
-          <p className="rotulo mt-10 text-tinta-2" data-sem-mapa>Atendemos {AREA}</p>
+          <p className="rotulo mt-10 text-tinta/80" data-sem-mapa>Atendemos {AREA}</p>
         </InView>
       </div>
     </section>

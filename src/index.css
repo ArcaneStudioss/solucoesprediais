@@ -74,6 +74,8 @@
   .btn-acc:hover { background: #ec8536; }
   .btn-linha { border: 1px solid var(--color-tinta); color: var(--color-tinta); }
   .btn-linha:hover { background: var(--color-tinta); color: var(--color-placa); }
+  .btn-escuro { background: var(--color-tinta); color: var(--color-placa); }
+  .btn-escuro:hover { background: #000; }
   .btn-vidro { border: 1px solid rgb(255 255 255 / .28); color: var(--color-placa); background: rgb(255 255 255 / .06); backdrop-filter: blur(8px); }
   .btn-vidro:hover { background: var(--color-placa); color: var(--color-tinta); border-color: var(--color-placa); }
 
@@ -85,7 +87,7 @@
     position: fixed; z-index: 40; right: 16px; bottom: calc(16px + env(safe-area-inset-bottom));
     display: grid; place-items: center; width: 58px; height: 58px; border-radius: 50%;
     background: var(--color-acc); color: var(--color-tinta);
-    box-shadow: 0 10px 24px -10px rgb(23 24 26 / .45);
+    box-shadow: 0 0 0 3px var(--color-tinta), 0 10px 24px -10px rgb(23 24 26 / .45);
     transition: transform .25s cubic-bezier(.2,.8,.2,1), background-color .2s;
   }
   .cta-fixo:hover { background: #ec8536; transform: translateY(-2px); }
